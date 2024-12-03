@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/img_background" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="36dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/img_the_coach" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/regular.ballo.21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activate_the_coach_app"
+                android:textColor="@color/white" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_radius_24"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/regular.18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/imei_device"
+                android:textColor="@color/N900" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_imei"
+                style="@style/medium.24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/N900"
+                tools:text="493873271837219" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_radius_24"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/regular.18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_note_input_phone_number" />
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_parent_edittext"
+                    android:paddingVertical="8dp"
+                    android:paddingHorizontal="16dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/regular.16"
+                        android:textColor="@color/N700"
+                        android:text="@string/account"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/medium.20"
+                        android:id="@+id/txt_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/N900"
+                        tools:text="0973934891"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_pass_new_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/regular.18"
+                android:text="@string/pass_new_account"
+                android:textColor="@color/N900"
+                android:layout_marginTop="16dp"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</FrameLayout>

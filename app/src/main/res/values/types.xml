@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // font baloo_bhai_regular
+    <style name="regular.ballo">
+        <item name="fontFamily">@font/baloo_bhai_regular</item>
+        <item name="android:fontFamily">@font/baloo_bhai_regular</item>
+    </style>
+    <style name="regular.ballo.21">
+        <item name="android:textSize">21sp</item>
+    </style>
+    // regular
+    <style name="regular">
+        <item name="fontFamily">@font/fz_poppins_regular</item>
+        <item name="android:fontFamily">@font/fz_poppins_regular</item>
+    </style>
+    <style name="regular.18" parent="regular">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="regular.16" parent="regular">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    // medium
+    <style name="medium">
+        <item name="fontFamily">@font/fz_poppins_medium</item>
+        <item name="android:fontFamily">@font/fz_poppins_medium</item>
+    </style>
+    <style name="medium.20">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="medium.24">
+        <item name="android:textSize">24sp</item>
+    </style>
+    
+</resources>

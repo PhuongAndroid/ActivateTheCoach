@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="attr_default_card">
+        <attr name="cardBackgroundColor">@color/white</attr>
+        <attr name=""
+    </declare-styleable>
+
+</resources>
