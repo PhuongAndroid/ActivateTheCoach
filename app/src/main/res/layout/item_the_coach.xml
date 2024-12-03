@@ -20,7 +20,7 @@
             android:layout_height="64dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            tools:src="@drawable/img_the_coach"/>
+            app:srcCompat="@drawable/img_the_coach" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_title"
@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/img"
             android:layout_toStartOf="@+id/ic_arrow"
-            tools:text="Kích hoạt ứng dụng\nThe Coach"
+            android:text="Kích hoạt ứng dụng\nThe Coach"
             android:layout_marginHorizontal="12dp"/>
 
         <androidx.appcompat.widget.AppCompatImageView

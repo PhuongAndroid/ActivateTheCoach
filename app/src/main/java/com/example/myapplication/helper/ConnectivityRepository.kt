@@ -10,7 +10,7 @@ class ConnectivityRepository(context: Context) {
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    private val _isConnected = MutableStateFlow(false)
+    val _isConnected = MutableStateFlow(false)
     val isConnected: Flow<Boolean> = _isConnected
 
     init {

@@ -20,26 +20,26 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        getByName("debug") {
-            keyAlias = "debug"
-            keyPassword = "123456"
-            storeFile = file("/home/miles/keystore.jks")
-            storePassword = "123456"
-        }
-        create("release") {
-            keyAlias = "release"
-            keyPassword = "123456"
-            storeFile = file("/home/miles/keystore.jks")
-            storePassword = "123456"
-        }
-    }
+//    signingConfigs {
+//        getByName("debug") {
+//            keyAlias = "debug"
+//            keyPassword = "123456"
+////            storeFile = file("/home/miles/keystore.jks")
+//            storePassword = "123456"
+//        }
+//        create("release") {
+//            keyAlias = "release"
+//            keyPassword = "123456"
+////            storeFile = file("/home/miles/keystore.jks")
+//            storePassword = "123456"
+//        }
+//    }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            signingConfig = signingConfigs.getByName("release")
+        release {
+            isMinifyEnabled = false
+            isShrinkResources = false
+//            signingConfig = signingConfigs.getByName("release")
             isDebuggable = false
             buildConfigField("String", "BASE_URL", "\"https://kidzone.masstel.vn/\"")
             proguardFiles(
@@ -48,10 +48,10 @@ android {
             )
         }
 
-        getByName("debug")   {
+        debug  {
             isMinifyEnabled = false
             isShrinkResources = false
-            signingConfig = signingConfigs.getByName("debug")
+//            signingConfig = signingConfigs.getByName("debug")
             isDebuggable = true
             buildConfigField("String", "BASE_URL", "\"https://kidzone.masstel.vn/\"")
             proguardFiles(
@@ -71,6 +71,7 @@ android {
 
     buildFeatures {
         //noinspection DataBindingWithoutKapt
+        buildConfig = true
         dataBinding = true
         viewBinding = true
     }
@@ -97,12 +98,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
 
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    implementation (libs.retrofit)
+    implementation (libs.retrofit2.kotlin.coroutines.adapter)
+    //noinspection UseTomlInstead
     implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     implementation (libs.kotlin.coroutine.core)
@@ -110,4 +112,7 @@ dependencies {
 
     //gson
     implementation (libs.gson)
+    // viewmodel
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.fragment.ktx)
 }

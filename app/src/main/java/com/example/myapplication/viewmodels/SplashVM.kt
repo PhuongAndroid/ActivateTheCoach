@@ -9,18 +9,16 @@ import com.example.myapplication.repository.TheCoachRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ActivateStateVM : ViewModel() {
+class SplashVM : ViewModel() {
+    var isActivated: Boolean = false
+    val theCoachRepository = TheCoachRepository()
+    val theCoachInfoLiveData: MutableLiveData<NetworkResult<BaseResponse>> =
+        theCoachRepository.theCoachInfoLiveData
+    var imei = ""
 
-    private val theCoachRepository = TheCoachRepository()
-    val activateResponseLiveData: MutableLiveData<NetworkResult<BaseResponse>> =
-        theCoachRepository.activateResponseLiveData
-    var imei: String = ""
-    var phoneNumber: String = ""
-
-    fun getData(isNetworkConnect: Boolean) {
+    fun getTheCoachInfo(isNetworkConnect: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            theCoachRepository.activate(isNetworkConnect, imei, phoneNumber)
+            theCoachRepository.getTheCoachInfo(isNetworkConnect, imei)
         }
     }
-
 }

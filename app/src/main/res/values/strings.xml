@@ -10,4 +10,9 @@
     <string name="account">Tài khoản</string>
     <string name="pass_new_account">Mật khẩu tài khoản mới là : <b>gioitienganh</b>\n
         \nSố điện thoại đã có mật khẩu của bạn, vui lòng <b>nhập mật khẩu đã có</b></string>
+    <string name="activated">Kích hoạt thành công</string>
+    <string name="note_activated">Chúc mừng con đã kích hoạt tài khoản The Coach 1 năm, hãy cố gắng rèn luyện để học giỏi Tiếng Anh hơn nữa nhé.</string>
+    <string name="activated_button">Xem thông tin tài khoản</string>
+    <string name="activate_fail_title">Kích hoạt thất bại</string>
+    <string name="activate_fail_button">Quay lại</string>
 </resources>

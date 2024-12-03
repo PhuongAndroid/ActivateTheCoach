@@ -32,5 +32,14 @@
     <style name="medium.24">
         <item name="android:textSize">24sp</item>
     </style>
+
+    // semibold
+    <style name="semi_bold">
+        <item name="fontFamily">@font/fz_poppins_semibold</item>
+        <item name="android:fontFamily">@font/fz_poppins_semibold</item>
+    </style>
+    <style name="semi_bold.24">
+        <item name="android:textSize">24sp</item>
+    </style>
     
 </resources>

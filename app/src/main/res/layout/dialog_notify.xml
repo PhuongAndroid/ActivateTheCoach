@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_radius_24"
+    android:padding="24dp"
+    android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_check"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/medium.24"
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/activated"
+        android:textColor="@color/N900"
+        android:gravity="center"
+        android:layout_marginTop="28dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/regular.18"
+        android:id="@+id/txt_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        tools:text="@string/note_activated"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="@string/activated_button"
+        android:textAllCaps="false"
+        style="@style/medium.24"
+        android:background="@drawable/bg_radius_24"
+        android:backgroundTint="@color/state_bg_color"
+        android:textColor="@color/state_text_color"
+        android:layout_marginTop="28dp"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

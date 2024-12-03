@@ -8,15 +8,24 @@ import com.example.myapplication.model.remote.NetworkResult
 
 class TheCoachRepository {
 
-    val apiService = ApiClient.apiService
+    private val apiService = ApiClient.apiService
     val activateResponseLiveData: MutableLiveData<NetworkResult<BaseResponse>> = MutableLiveData()
+    val theCoachInfoLiveData: MutableLiveData<NetworkResult<BaseResponse>> = MutableLiveData()
 
-    suspend fun fetchResult(isNetworkConnect: Boolean, imei: String, phone: String) {
-        activateResponseLiveData.value = NetworkResult.Loading()
+    suspend fun activate(isNetworkConnect: Boolean, imei: String, phone: String) {
+        activateResponseLiveData.postValue(NetworkResult.Loading())
         if (isNetworkConnect) {
-            activateResponseLiveData.postSimpled { NetworkResult(apiService.activeTheCoach(imei, phone)) }
+            activateResponseLiveData.postSimpled { apiService.activeTheCoach(imei, phone) }
         } else {
-            activateResponseLiveData.value = NetworkResult.Error("No Internet connection !")
+            activateResponseLiveData.postValue(NetworkResult.Error("No Internet connection !"))
         }
+    }
+
+    suspend fun getTheCoachInfo(isNetworkConnect: Boolean, imei: String) {
+        theCoachInfoLiveData.postValue(NetworkResult.Loading())
+        if (isNetworkConnect) {
+            theCoachInfoLiveData.postSimpled { apiService.infoTheCoach(imei) }
+        } else
+            theCoachInfoLiveData.postValue(NetworkResult.Error("No Internet connection !"))
     }
 }
