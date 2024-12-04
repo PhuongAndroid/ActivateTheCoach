@@ -43,12 +43,12 @@ class InformationFragment : Fragment() {
     }
 
     private fun registerEvents() {
-//        requireActivity().onBackPressedDispatcher.addCallback {
-//            requireActivity().supportFragmentManager.popBackStackImmediate(
-//                    SplashFragment::class.java.name,
-//                    FragmentManager.POP_BACK_STACK_INCLUSIVE
-//                )
-//        }
+        requireActivity().onBackPressedDispatcher.addCallback {
+            requireActivity().supportFragmentManager.popBackStackImmediate(
+                    null,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+                )
+        }
     }
 
     companion object {

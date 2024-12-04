@@ -1,5 +1,6 @@
 package com.example.myapplication.helper
 
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.thecoach.R
@@ -29,4 +30,8 @@ fun AppCompatActivity.replaceFragmentToBackStack(id: Int, fragment: Fragment) {
         replace(id, fragment)
         commit()
     }
+}
+
+fun Fragment.showToast(mess: String?) {
+    Toast.makeText(requireContext(), "Có lỗi xảy ra: $mess", Toast.LENGTH_LONG).show()
 }

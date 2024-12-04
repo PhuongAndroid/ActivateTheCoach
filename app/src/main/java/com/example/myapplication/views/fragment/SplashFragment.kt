@@ -13,6 +13,7 @@ import com.example.myapplication.MainActivity
 import com.example.myapplication.helper.ConnectivityRepository
 import com.example.myapplication.helper.IMEIHelper
 import com.example.myapplication.helper.replaceFragmentToBackStack
+import com.example.myapplication.helper.showToast
 import com.example.myapplication.model.remote.BaseResponse
 import com.example.myapplication.model.remote.InfoTheCoach
 import com.example.myapplication.model.remote.NetworkResult
@@ -102,7 +103,7 @@ class SplashFragment : Fragment() {
 
                 is NetworkResult.Error -> {
                     binding.viewLoading.isVisible = false
-                    viewModel.isActivated = false
+                    showToast(data.message)
                 }
 
                 is NetworkResult.Success -> {
