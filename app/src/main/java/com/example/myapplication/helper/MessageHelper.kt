@@ -1,10 +1,10 @@
 package com.example.myapplication.helper
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.model.remote.BaseResponse
+import com.example.myapplication.model.remote.BaseStatus
 import com.example.myapplication.model.remote.NetworkResult
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 inline fun <T> MutableLiveData<NetworkResult<T>>.postSimpled(callback: () -> T) {
     try {
@@ -14,7 +14,7 @@ inline fun <T> MutableLiveData<NetworkResult<T>>.postSimpled(callback: () -> T) 
         if (errorBody != null) {
             try {
                 val messageResponse =
-                    Moshi.Builder().build().adapter(BaseResponse::class.java).fromJson(errorBody)
+                    Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(BaseStatus::class.java).fromJson(errorBody)
                 if (messageResponse != null) {
                     postValue(NetworkResult.Error(message = messageResponse.message))
                 }

@@ -32,7 +32,7 @@ fun showNotifyDialog(
     binding.txtTitle.text = title
     binding.txtNote.text = note
     binding.btnAction.text = textButton
-//    binding.txtNote.isVisible = isSuccess
+    binding.txtNote.isVisible = isSuccess
     binding.btnAction.setOnClickListener {
         callback()
         deleteDialog.dismiss()

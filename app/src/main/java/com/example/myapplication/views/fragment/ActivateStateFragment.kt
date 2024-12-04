@@ -61,9 +61,9 @@ class ActivateStateFragment : Fragment() {
             doAfterTextChanged {
                 if (length() >= 10) {
                     val isPhoneNumber = isVietnamesePhoneNumber(text.toString())
-//                    binding.txtValidPhoneNumber.isVisible = !isPhoneNumber
-//                    binding.btnActivate.isEnabled = isPhoneNumber
-                    binding.btnActivate.isEnabled = true
+                    binding.txtValidPhoneNumber.isVisible = !isPhoneNumber
+                    binding.btnActivate.isEnabled = isPhoneNumber
+                    //binding.btnActivate.isEnabled = true
                 } else {
                     binding.txtValidPhoneNumber.isVisible = false
                     binding.btnActivate.isEnabled = false
@@ -72,7 +72,8 @@ class ActivateStateFragment : Fragment() {
         }
 
         binding.btnActivate.setOnClickListener {
-            viewModel.getData(
+            viewModel.phoneNumber = binding.editText.text.toString()
+            viewModel.onActivate(
                 isNetworkConnect = connectRepository._isConnected.value
             )
         }
@@ -81,12 +82,30 @@ class ActivateStateFragment : Fragment() {
     private fun handleObservers() {
         viewModel.activateResponseLiveData.observe(viewLifecycleOwner) { data ->
             when (data) {
-                is Loading -> {}
-                is Error ->
+                is Loading -> binding.viewLoading.isVisible = true
+                is Error -> {
+                    binding.viewLoading.isVisible = false
                     showErrorDialog(data.message)
+                }
 
-                is Success ->
+                is Success -> {
+                    binding.viewLoading.isVisible = false
+                    viewModel.sendIMEI(connectRepository._isConnected.value)
+                }
+            }
+        }
+
+        viewModel.sendIMEILiveData.observe(viewLifecycleOwner) { data ->
+            when (data) {
+                is Loading -> binding.viewLoading.isVisible = true
+                is Error -> {
+                    binding.viewLoading.isVisible = false
+                    showErrorDialog(data.message)
+                }
+                is Success -> {
+                    binding.viewLoading.isVisible = false
                     showSuccessDialog()
+                }
             }
         }
     }
@@ -109,20 +128,22 @@ class ActivateStateFragment : Fragment() {
         showNotifyDialog(
             mContext = requireContext(),
             src = ContextCompat.getDrawable(requireContext(), R.drawable.ic_check),
-            title = getString(R.string.note_activated),
+            title = getString(R.string.activated),
             note = getString(R.string.note_activated),
             textButton = getString(R.string.activated_button),
             isSuccess = true,
         ) {
             (requireActivity() as MainActivity).replaceFragmentToBackStack(
                 R.id.container,
-                ActivatedFragment.newInstance()
+                InformationFragment.newInstance(
+                    viewModel.imei, viewModel.phoneNumber
+                )
             )
         }
     }
 
     private fun isVietnamesePhoneNumber(number: String): Boolean {
-        val regex = Regex("/(?:\\+84|0084|0)[235789][0-9]{1,2}[0-9]{7}(?:[^\\d]+|\$)/g")
+        val regex = Regex("^(?=(?:[^\\n\\d]*\\d){5})(?!(?:[^\\n\\d]*\\d){21})(?:\\(\\+?\\d+\\)|\\+?\\d+) ?\\d+(?:-\\d+)*(?: ?#\\d+)?\$")
         return regex.matches(number)
     }
 
@@ -132,9 +153,7 @@ class ActivateStateFragment : Fragment() {
 
         // Gọi hàm lấy IMEI
         val imei = IMEIHelper.getIMEICode(contentResolver)
-
-        // Kiểm tra giá trị IMEI
-        return if (imei != null) "Device IMEI: $imei" else "Unable to retrieve IMEI code."
+        return if (imei.isNullOrEmpty()) "" else imei
     }
 
     companion object {

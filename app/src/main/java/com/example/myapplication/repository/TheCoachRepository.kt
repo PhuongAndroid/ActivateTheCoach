@@ -4,13 +4,25 @@ import androidx.lifecycle.MutableLiveData
 import com.example.myapplication.api.ApiClient
 import com.example.myapplication.helper.postSimpled
 import com.example.myapplication.model.remote.BaseResponse
+import com.example.myapplication.model.remote.BaseStatus
+import com.example.myapplication.model.remote.InfoTheCoach
 import com.example.myapplication.model.remote.NetworkResult
 
 class TheCoachRepository {
 
     private val apiService = ApiClient.apiService
-    val activateResponseLiveData: MutableLiveData<NetworkResult<BaseResponse>> = MutableLiveData()
-    val theCoachInfoLiveData: MutableLiveData<NetworkResult<BaseResponse>> = MutableLiveData()
+    val activateResponseLiveData: MutableLiveData<NetworkResult<BaseStatus>> =
+        MutableLiveData()
+    val theCoachInfoLiveData: MutableLiveData<NetworkResult<BaseResponse<InfoTheCoach>>> =
+        MutableLiveData()
+    val sendIMEILiveData: MutableLiveData<NetworkResult<BaseStatus>> =
+        MutableLiveData()
+
+    suspend fun sendIMEI(isNetworkConnect: Boolean, imei: String) {
+        if (isNetworkConnect) {
+            sendIMEILiveData.postSimpled { apiService.activate(imei) }
+        }
+    }
 
     suspend fun activate(isNetworkConnect: Boolean, imei: String, phone: String) {
         activateResponseLiveData.postValue(NetworkResult.Loading())

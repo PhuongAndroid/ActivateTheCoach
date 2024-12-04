@@ -26,14 +26,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_check" />
+                app:srcCompat="@drawable/ic_joy_star"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_imei"
                 style="@style/regular.18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="46dp"
                 android:gravity="center"
                 android:text="@string/imei_device"
                 android:textColor="@color/white"
@@ -75,7 +74,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#60A3A6B1"
-        android:gravity="center">
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
 
         <ProgressBar
             android:layout_width="32dp"

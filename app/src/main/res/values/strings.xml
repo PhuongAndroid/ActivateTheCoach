@@ -15,4 +15,5 @@
     <string name="activated_button">Xem thông tin tài khoản</string>
     <string name="activate_fail_title">Kích hoạt thất bại</string>
     <string name="activate_fail_button">Quay lại</string>
+    <string name="input_number">Nhập số điện thoại</string>
 </resources>

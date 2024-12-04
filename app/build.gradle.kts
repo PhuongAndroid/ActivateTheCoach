@@ -4,6 +4,8 @@ import java.util.Date
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    id("com.google.devtools.ksp").version("1.6.10-1.0.4")
 }
 
 android {
@@ -83,7 +85,7 @@ android {
         variant.outputs.all {
             val flavor = variant.name
             val versionName = variant.versionName
-            val outputFileName = "${timestamp}_10pro_${flavor}_${versionName}.apk"
+            "${timestamp}_10pro_${flavor}_${versionName}.apk"
         }
         true
     }
@@ -104,8 +106,14 @@ dependencies {
 
     implementation (libs.retrofit)
     implementation (libs.retrofit2.kotlin.coroutines.adapter)
-    //noinspection UseTomlInstead
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+
+    // Moshi
+    implementation (libs.converter.moshi)
+    //noinspection KaptUsageInsteadOfKsp
+    ksp(libs.moshi.kotlin.codegen)
+    implementation (libs.moshi)
+    implementation (libs.moshi.kotlin)
+    implementation (libs.moshi.adapters)
 
     implementation (libs.kotlin.coroutine.core)
     implementation (libs.kotlin.coroutine.android)
