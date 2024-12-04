@@ -12,7 +12,7 @@ fun AppCompatActivity.addFragment(id: Int, fragment: Fragment) {
             R.anim.fade_in, // popEnter
             R.anim.slide_out // popExit
         )
-        add(id, fragment)
+        add(id, fragment, fragment::class.java.name)
         commit()
     }
 }

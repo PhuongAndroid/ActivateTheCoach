@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Kích hoạt bảo hành</string>
     <string name="imei_device">IMEI THIẾT BỊ</string>
     <string name="activate_the_coach_app">Kích hoạt ứng dụng The Coach</string>
     <string name="zalo_support">Zalo hỗ trợ khách hàng</string>

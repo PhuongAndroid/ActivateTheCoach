@@ -85,7 +85,7 @@ class SplashFragment : Fragment() {
         }
 
         binding.itemSupport.cardSupport.setOnClickListener {
-            var url = ""
+            var url = "https://zalo.me/33749327250198830"
             if (!url.startsWith("http://") && !url.startsWith("https://")) {
                 url = "http://$url"
             }
@@ -107,7 +107,7 @@ class SplashFragment : Fragment() {
 
                 is NetworkResult.Success -> {
                     binding.viewLoading.isVisible = false
-                    viewModel.isActivated = true
+                    viewModel.isActivated = data.data?.data != null
                 }
             }
         }

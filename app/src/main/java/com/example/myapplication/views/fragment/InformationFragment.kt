@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
@@ -16,18 +17,6 @@ class InformationFragment : Fragment() {
     private val viewModel: InformationVM by viewModels()
     private val binding: FragmentActivatedBinding by lazy {
         FragmentActivatedBinding.inflate(layoutInflater)
-    }
-
-    val callback = object : OnBackPressedCallback(
-        true // default to enabled
-    ) {
-        override fun handleOnBackPressed() {
-            requireActivity().supportFragmentManager
-                .popBackStackImmediate(
-                    SplashFragment::class.java.name,
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE
-                )
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +43,12 @@ class InformationFragment : Fragment() {
     }
 
     private fun registerEvents() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+//        requireActivity().onBackPressedDispatcher.addCallback {
+//            requireActivity().supportFragmentManager.popBackStackImmediate(
+//                    SplashFragment::class.java.name,
+//                    FragmentManager.POP_BACK_STACK_INCLUSIVE
+//                )
+//        }
     }
 
     companion object {

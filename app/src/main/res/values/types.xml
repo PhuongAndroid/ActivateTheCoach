@@ -6,7 +6,7 @@
         <item name="fontFamily">@font/baloo_bhai_regular</item>
         <item name="android:fontFamily">@font/baloo_bhai_regular</item>
     </style>
-    <style name="regular.ballo.21">
+    <style name="regular.ballo.21" parent="regular.ballo">
         <item name="android:textSize">21sp</item>
     </style>
     // regular
@@ -26,10 +26,10 @@
         <item name="fontFamily">@font/fz_poppins_medium</item>
         <item name="android:fontFamily">@font/fz_poppins_medium</item>
     </style>
-    <style name="medium.20">
+    <style name="medium.20" parent="medium">
         <item name="android:textSize">20sp</item>
     </style>
-    <style name="medium.24">
+    <style name="medium.24" parent="medium">
         <item name="android:textSize">24sp</item>
     </style>
 
@@ -38,7 +38,7 @@
         <item name="fontFamily">@font/fz_poppins_semibold</item>
         <item name="android:fontFamily">@font/fz_poppins_semibold</item>
     </style>
-    <style name="semi_bold.24">
+    <style name="semi_bold.24" parent="semi_bold">
         <item name="android:textSize">24sp</item>
     </style>
     

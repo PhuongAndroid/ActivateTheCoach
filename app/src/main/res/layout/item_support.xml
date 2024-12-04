@@ -29,7 +29,7 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/img"
             android:layout_toStartOf="@+id/ic_arrow"
-            android:text="Kích hoạt ứng dụng\nThe Coach"
+            android:text="@string/zalo_support"
             android:layout_marginHorizontal="12dp"/>
 
         <androidx.appcompat.widget.AppCompatImageView
